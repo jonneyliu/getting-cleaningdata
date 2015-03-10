@@ -26,4 +26,8 @@ list(json1[[5]]$name, json1[[5]]$created_at)
 
 #transform to data table
 json2 = jsonlite::fromJSON(toJSON(json1))
-json2[1,1:4]
+#transform to data table
+json2 = jsonlite::fromJSON(toJSON(json1))
+json2$name
+json2[5,]
+json2[5,]$created_at
