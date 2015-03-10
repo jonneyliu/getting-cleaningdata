@@ -31,3 +31,35 @@ json2 = jsonlite::fromJSON(toJSON(json1))
 json2$name
 json2[5,]
 json2[5,]$created_at
+
+
+### Question 2
+
+library(sqldf)
+acs <- read.csv("Getting & cleaning data/getdata-data-ss06pid.csv", header=T, sep=",")
+head(acs)
+sqldf("select * from acs where AGEP < 50 and pwgtp1")
+sqldf("select * from acs where AGEP < 50")
+sqldf("select * from acs")
+sqldf("select pwgtp1 from acs where AGEP < 50")
+
+
+###Question 3
+##Using the same data frame you created in the previous problem, what is the equivalent function to unique(acs$AGEP)
+sqldf("select distinct AGEP from acs")
+
+
+
+###Question 4
+
+con = url("http://biostat.jhsph.edu/~jleek/contact.html")
+htmlCode = readLines(con)
+close(con)
+htmlCode
+sapply(htmlCode[c(10,20,30,100)],nchar)
+
+
+###Question 5
+dat<-read.fwf("./Getting & cleaning data/getdata-wksst8110.for",widths=c(12, 7,4, 9,4, 9,4, 9,4),header=FALSE,skip =4)
+sum(dat[,4])
+
